@@ -1,0 +1,38 @@
+.nav{
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+
+    .navLeft{
+        display: flex;
+        align-items: center;
+        margin-left: 10%;
+        .navLeftLogo{
+            width: 70px;
+            height: 70px;
+        }
+        span{
+            font-size: 22px;
+            padding-top: 5px;
+            cursor: pointer;
+            color: #2D2D2D;
+        }
+    }
+
+    .navRight{
+        display: flex;
+        align-items: center;
+        margin-right: 10%;
+        gap: 40px;
+        
+        span{
+            font-size: 18px;
+            padding-top: 5px;
+            cursor: pointer;
+            color: #2D2D2D;
+        }
+        span:hover{
+            text-decoration: underline;
+        }
+    }
+}
