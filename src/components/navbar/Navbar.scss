@@ -1,37 +1,62 @@
 .nav{
+    width: 100vw;
     height: 60px;
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    
 
     .navLeft{
         display: flex;
         align-items: center;
-        margin-left: 10%;
+        margin-left: 9%;
         .navLeftLogo{
             width: 70px;
             height: 70px;
         }
-        span{
+        #teamName{
             font-size: 22px;
-            padding-top: 5px;
+            padding-top: 6px;
             cursor: pointer;
             color: #2D2D2D;
+            font-weight: 500;
+        }
+        #teamNameFixed{
+            font-size: 22px;
+            padding-top: 6px;
+            cursor: pointer;
+            color: #FFFFFF;
+            font-weight: 500;
         }
     }
 
     .navRight{
         display: flex;
         align-items: center;
-        margin-right: 10%;
+        margin-right: 9%;
         gap: 40px;
         
-        span{
+        #sectionsName{
             font-size: 18px;
-            padding-top: 5px;
+            padding-top: 7px;
             cursor: pointer;
             color: #2D2D2D;
+            text-decoration: none;
         }
-        span:hover{
+        #sectionsName:hover{
+            text-decoration: underline;
+        }
+
+        #sectionsNameFixed{
+            font-size: 18px;
+            padding-top: 7px;
+            cursor: pointer;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+        #sectionsNameFixed:hover{
             text-decoration: underline;
         }
     }
