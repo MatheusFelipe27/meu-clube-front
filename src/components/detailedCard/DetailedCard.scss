@@ -1,0 +1,41 @@
+.detailedCard{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+
+    img{
+        width: 350px;
+        height: 250px;
+    }
+    #detailedName{
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+        font-weight:500;
+    }
+
+    .detailedBottom{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        #detailedInfo{
+            display: flex;
+            justify-content: center;
+            font-size: 13px;
+            padding-top: 5px;
+            cursor: pointer;
+        }
+        #detailedInfo:hover{
+            text-decoration: underline;
+        }
+    }
+
+    .detailedInfoVal{
+        display: flex;
+        flex-direction: column;
+        background-color: #FFFFFF;
+        gap: 5px;
+        padding: 20px;
+        overflow-wrap: break-word;
+    }
+}
