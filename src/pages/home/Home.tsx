@@ -10,6 +10,7 @@ import socialmedia from './../../assets/socialmedia.png'
 import './Home.scss'
 import Navbar from '../../components/navbar/Navbar'
 import Departments from '../../components/departments/Departments'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -27,7 +28,7 @@ const Home = () => {
         };
       }, []);
 
-      useEffect(() => {
+    useEffect(() => {
         if (navbarFixed) {
           document.getElementsByTagName("nav")[0].style.background = "#2D2D2D"
         } 
@@ -57,12 +58,12 @@ const Home = () => {
             <div className='homeDepartments' id='homeDepartments'> 
                 <span id='title'>Nossos departamentos</span>
                 <div className= 'homeDepartmentsGrid' id='homeDepartments'>
-                    <Departments name="Futebol" img={soccer}/>
-                    <Departments name="Medicina" img={medicine}/>
-                    <Departments name="Categoria de base" img={base}/>
-                    <Departments name="Finanças" img={finances}/>
-                    <Departments name="Marketing" img={marketing}/>
-                    <Departments name="Comunicação" img={socialmedia}/>
+                    <Link to='/Futebol' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Futebol" img={soccer}/> </Link> 
+                    <Link to='/Medicina' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Medicina" img={medicine}/> </Link>   
+                    <Link to='/Base' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Categoria de base" img={base}/> </Link>
+                    <Link to='/Finanças' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Finanças" img={finances}/> </Link>
+                    <Link to='marketing' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Marketing" img={marketing}/> </Link>
+                    <Link to='/Comunicação' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Comunicação" img={socialmedia}/> </Link>
                 </div>
             </div>
         </div>
