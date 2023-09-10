@@ -62,7 +62,7 @@ const Home = () => {
                     <Link to='/Medicina' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Medicina" img={medicine}/> </Link>   
                     <Link to='/Base' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Categoria de base" img={base}/> </Link>
                     <Link to='/Finanças' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Finanças" img={finances}/> </Link>
-                    <Link to='marketing' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Marketing" img={marketing}/> </Link>
+                    <Link to='/Marketing' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Marketing" img={marketing}/> </Link>
                     <Link to='/Comunicação' style={{textDecoration: 'none', color: 'inherit'}}> <Departments name="Comunicação" img={socialmedia}/> </Link>
                 </div>
             </div>
