@@ -16,8 +16,10 @@ import socialmedia from './../../assets/socialmedia.png'
 
 import Navbar from '../../components/navbar/Navbar'
 import DetailedCard from '../../components/detailedCard/DetailedCard'
+import Modal from '../../components/modal/Modal'
 
 const DepartmentDetails = () => {
+    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
     useEffect(()=>{
 
       window.scrollTo(0, 0)
@@ -71,6 +73,11 @@ const DepartmentDetails = () => {
         }
     }, [navbarFixed]);
 
+    console.log(modalIsOpen)
+
+    const close = () =>{
+      setModalIsOpen(false)
+    }
     
   return (
     <>
@@ -93,10 +100,11 @@ const DepartmentDetails = () => {
             <div className='departmentDetailsDepartments' id='departmentDetailsDepartments'>
               <div className='departmentsDetailsTitle'>
                 <span id='title'>Nossas Atividades</span>
-                <span id='addAct'> Adicionar Atividade </span>
+                <span id='addAct' onClick={()=> setModalIsOpen(true)}> Adicionar Atividade </span>
+                {modalIsOpen? <Modal openModal={modalIsOpen} onClose={close} title= 'Nova Atividade' />  : ''}
               </div> 
                 <div className= 'departmentDetailsDepartmentsGrid' id='departmentDetailsDepartments'>
-                  <DetailedCard img={departmentInfo.img} name={departmentName=== undefined? '' : departmentName}/>
+                  <DetailedCard img={departmentInfo.img}/>
                 </div>
             </div>
         </div>
