@@ -18,7 +18,6 @@ const Modal = ({openModal, onClose, title, url, type, method} :ModalProps )=> {
     const closeModal = () =>{
         onClose();
     }
-    console.log(url)
 
     const add = () =>{
         if(method==='post'){
@@ -46,7 +45,7 @@ const Modal = ({openModal, onClose, title, url, type, method} :ModalProps )=> {
         }
         else{
             if(url.includes('detalhes')){
-                axios.post(url,{
+                axios.put(url,{
                     detail: name
                 })
                 .then(()=>{

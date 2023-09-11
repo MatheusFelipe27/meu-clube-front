@@ -19,6 +19,7 @@ const DetailedCard = ({img, name, keyIdx, type} : DetailedCardProps) => {
     const [edit, setEdit] = useState<boolean>(false)
     const [editDetail, setEditDetail] = useState<boolean>(false)
 
+
     const [data, setData] = useState<any>()
 
     const close = ()=>{
@@ -105,22 +106,24 @@ const DetailedCard = ({img, name, keyIdx, type} : DetailedCardProps) => {
                     {data[0].details.length>0?
                        data.map((val : any)=>(
                             val.details.map((
-                                detail : any, index: number) =>(
-                                    <div key={index} className='detailedDiv'> 
-                                        <span> {detail}</span>
-                                        <div className='detailedIcons'> 
-                                            <span onClick={() =>setEditDetail(true)}><AiFillEdit size={'18px'}/></span>
-                                            {editDetail?
-                                                <Modal openModal={editDetail} onClose={close}
-                                                    title='Editar detalhe' url={`${BASE_URL}/processos/${keyIdx}/detalhes/${index}`}
-                                                    type={type} method='put'
-                                                />
-                                                : ' '
-                                            }
-                                            <span onClick={()=>deleteDetail(index)}><AiFillDelete size={'18px'}/></span>
+                                detail : any, index: number) =>{
+                                    return(
+                                        <div key={index} className='detailedDiv'> 
+                                            <span> {detail}</span>
+                                            <div className='detailedIcons'> 
+                                                <span onClick={() =>setEditDetail(true)} ><AiFillEdit size={'18px'}/></span>
+                                                {editDetail?
+                                                    <Modal openModal={editDetail} onClose={close}
+                                                        title='Editar detalhe' url={`${BASE_URL}/processos/${keyIdx}/detalhes/${index}`}
+                                                        type={type} method='put'
+                                                    />
+                                                    : ' '
+                                                }
+                                                <span onClick={()=>deleteDetail(index)}><AiFillDelete size={'18px'}/></span>
+                                            </div>
                                         </div>
-                                    </div>
-                            ))
+                                    )    
+                                })
                        ))
                         :
                         <span>Não há informações no momento!</span>
