@@ -118,6 +118,7 @@ const DepartmentDetails = () => {
                 {modalIsOpen? 
                   <Modal openModal={modalIsOpen} onClose={close} 
                     title= 'Nova Atividade' url = {`${BASE_URL}/processos`} type= {departmentInfo.name}
+                    method='post'
                   />  
                   : 
                   ''

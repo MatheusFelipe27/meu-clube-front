@@ -8,43 +8,66 @@ interface ModalProps {
     title: string
     url: string
     type: string
+    method: string
 }    
 
-const Modal = ({openModal, onClose, title, url, type} :ModalProps )=> {
+const Modal = ({openModal, onClose, title, url, type, method} :ModalProps )=> {
     const [isOpen] = useState<Boolean>(openModal)
     const [name, setName] = useState<string>('')
 
     const closeModal = () =>{
         onClose();
     }
-
     console.log(url)
-    const add = () =>{
-        if(url.length>31){
 
-            console.log("teste")
-            axios.put(url,{
-                type: type,
-                name: name
-            })
-            .then(()=>{
-                console.log("atualizado com sucesso")
-            })
-            .catch((error)=>{
-                console.error(error)
-            })
+    const add = () =>{
+        if(method==='post'){
+            url.includes('detalhes')?
+                axios.post(url,{
+                    detail: name
+                })
+                .then(()=>{
+                    console.log("detalhe adicionado")
+                })
+                .catch((error)=>{
+                    console.error(error)
+                })    
+            :
+                axios.post(url, {
+                    type: type,
+                    name: name
+                })
+                .then(()=>{
+                    console.log("Cadastro realizado!")
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
         }
         else{
-            axios.post(url, {
-                type: type,
-                name: name
-            })
-            .then(()=>{
-                console.log("Cadastro realizado!")
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
+            if(url.includes('detalhes')){
+                axios.post(url,{
+                    detail: name
+                })
+                .then(()=>{
+                    console.log("detalhe atualizado com sucesso")
+                })
+                .catch((error)=>{
+                    console.error(error)
+                })    
+            }
+            else{
+                axios.put(url,{
+                    type: type,
+                    name: name
+                })
+                .then(()=>{
+                    console.log("Atividade atualizada com sucesso")
+                })
+                .catch((error)=>{
+                    console.error(error)
+                })    
+            }
         }
     }
 
