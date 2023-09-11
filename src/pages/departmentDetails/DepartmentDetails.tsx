@@ -18,6 +18,9 @@ import Navbar from '../../components/navbar/Navbar'
 import DetailedCard from '../../components/detailedCard/DetailedCard'
 import Modal from '../../components/modal/Modal'
 
+import { BASE_URL } from '../../constants/Constants'
+import axios from 'axios'
+
 const DepartmentDetails = () => {
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
     useEffect(()=>{
@@ -36,7 +39,7 @@ const DepartmentDetails = () => {
         departmentInfo = {name: departmentName, img: medicine, imgRemoved: medicineRemoved}
         break
       case 'Base':
-        departmentInfo = {name: 'categoria de bases', img: base, imgRemoved: baseRemoved }
+        departmentInfo = {name: departmentName, img: base, imgRemoved: baseRemoved }
         break
       case 'Finanças':
         departmentInfo = {name: departmentName, img: finances, imgRemoved: financesRemoved}
@@ -73,11 +76,22 @@ const DepartmentDetails = () => {
         }
     }, [navbarFixed]);
 
-    console.log(modalIsOpen)
-
     const close = () =>{
       setModalIsOpen(false)
     }
+
+    const [data, setData] = useState<Object>({})
+    
+    useEffect(()=>{
+      axios.get(`${BASE_URL}/processos`)
+      .then((res)=>{
+        setData(res.data)
+        console.log(res)
+      })
+      .catch((error)=>{
+        console.error(error)
+      })
+    },[])
     
   return (
     <>
@@ -101,10 +115,26 @@ const DepartmentDetails = () => {
               <div className='departmentsDetailsTitle'>
                 <span id='title'>Nossas Atividades</span>
                 <span id='addAct' onClick={()=> setModalIsOpen(true)}> Adicionar Atividade </span>
-                {modalIsOpen? <Modal openModal={modalIsOpen} onClose={close} title= 'Nova Atividade' />  : ''}
+                {modalIsOpen? 
+                  <Modal openModal={modalIsOpen} onClose={close} 
+                    title= 'Nova Atividade' url = {`${BASE_URL}/processos`} type= {departmentInfo.name}
+                  />  
+                  : 
+                  ''
+                }
               </div> 
                 <div className= 'departmentDetailsDepartmentsGrid' id='departmentDetailsDepartments'>
-                  <DetailedCard img={departmentInfo.img}/>
+                  {data?
+                    Object.values(data)
+                    .map((val, index) => ({ ...val, originalIndex: index }))
+                    .filter((val) => val.type ===departmentName)
+                    .map((val)=> ( 
+                      <DetailedCard img={departmentInfo.img} name={val.name} key={val.originalIndex} 
+                        keyIdx={val.originalIndex} type={val.type}
+                      />
+                    ))
+                    : ''
+                  }
                 </div>
             </div>
         </div>
