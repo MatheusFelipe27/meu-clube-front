@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.scss'
 import logo from './../../assets/logo.png'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [navbarFixed,setNavbarFixed] = useState<boolean>(false)
@@ -20,7 +21,7 @@ const Navbar = () => {
         <nav className='nav'>
             <div className='navLeft'>
               <img className='navLeftLogo' src={logo} alt='logo'/>
-              <span id={navbarFixed? 'teamNameFixed' : 'teamName'}> FC Matheus</span>
+              <Link to='/' style={{textDecoration: 'none', color: 'inherit', paddingTop: '4px'}} > <span id={navbarFixed? 'teamNameFixed' : 'teamName'}> FC Matheus</span></Link>
             </div>
             <div className='navRight'>
               <a href='#homeInitial' id={navbarFixed? 'sectionsNameFixed' : 'sectionsName'}> Inicio</a>
